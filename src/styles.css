@@ -1,0 +1,54 @@
+/* Existing styles... */
+.app-header {
+    background-color: #2b1e1e;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+  }
+  .app-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+  }
+  .nav-links a:hover {
+    color: #ff5252; /* Highlight color on hover */
+  }
+
+
+/* Footer styles */
+.app-footer {
+    background-color: #2b1e1e; /* Dark background color */
+    color: white; /* Text color */
+    padding: 20px 0; /* Top and bottom padding */
+    text-align: center; /* Centered text */
+    position: relative; /* Positioning */
+    bottom: 0; /* Align to bottom */
+    width: 100%; /* Full width */
+}
+
+.footer-content {
+    max-width: 800px; /* Maximum width for the content */
+    margin: auto; /* Center the content */
+    padding: 0 20px; /* Side padding */
+}
+
+.footer-content p {
+    margin: 5px 0; /* Margin between paragraphs */
+}
+
+.footer-content a {
+    color: #7edee9; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.footer-content a:hover {
+    text-decoration: underline; /* Underline on hover */
+}

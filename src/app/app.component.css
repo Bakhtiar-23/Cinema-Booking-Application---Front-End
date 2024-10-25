@@ -1,0 +1,53 @@
+/* Bakhtiar*/
+.header {
+  display: flex;
+  flex-direction: column; /* Stack header elements vertically */
+  align-items: center; /* Center elements horizontally */
+}
+
+.header, h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 400%;
+  margin: 0; /* Remove default margin for proper alignment */
+  position: center;
+  align-items: center;
+}
+  h2, h3 {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+  }
+  body {
+    margin: 2em;
+  }
+  body, input[type="text"], button {
+    color: #333;
+    font-family: Cambria, Georgia, serif;
+  }
+  button {
+    background-color: #eee;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  button:hover {
+    background-color: black;
+    color: white;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: auto;
+  }
+  
+  /* everywhere else */
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+  }

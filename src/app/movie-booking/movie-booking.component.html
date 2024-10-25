@@ -1,0 +1,123 @@
+<div class="booking-form">
+    <h3>Book a Movie Seat</h3>
+    <form (ngSubmit)="bookSeat(bookingForm)" #bookingForm="ngForm">
+  
+      <!-- User Name -->
+      <div class="form-group">
+        <label for="userName">Name:</label>
+        <input
+          type="text"
+          id="userName"
+          [(ngModel)]="userName"
+          name="userName"
+          required
+          #userNameField="ngModel"
+          [ngClass]="{'is-invalid': userNameField.invalid && userNameField.touched}"
+        />
+        <div *ngIf="userNameField.invalid && userNameField.touched" class="error-message">
+          Name is required.
+        </div>
+      </div>
+  
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          required
+          #emailField="ngModel"
+          [ngClass]="{'is-invalid': emailField.invalid && emailField.touched}"
+        />
+        <div *ngIf="emailField.invalid && emailField.touched" class="error-message">
+          Valid email is required.
+        </div>
+      </div>
+  
+      <!-- Phone Number -->
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input
+          type="tel"
+          id="phone"
+          [(ngModel)]="phone"
+          name="phone"
+          required
+          pattern="[0-9]{10}"  
+          #phoneField="ngModel"
+          [ngClass]="{'is-invalid': phoneField.invalid && phoneField.touched}"
+        />
+        <div *ngIf="phoneField.invalid && phoneField.touched" class="error-message">
+          A valid phone number is required.
+        </div>
+      </div>
+  
+      <!-- Payment Method -->
+      <div class="form-group">
+        <label for="paymentMethod">Payment Method:</label>
+        <select
+          id="paymentMethod"
+          [(ngModel)]="paymentMethod"
+          name="paymentMethod"
+          required
+          #paymentMethodField="ngModel"
+          [ngClass]="{'is-invalid': paymentMethodField.invalid && paymentMethodField.touched}"
+        >
+          <option value="">Select a payment method</option>
+          <option value="credit-card">Credit Card</option>
+          <option value="paypal">PayPal</option>
+        </select>
+        <div *ngIf="paymentMethodField.invalid && paymentMethodField.touched" class="error-message">
+          Payment method is required.
+        </div>
+      </div>
+  
+      <!-- Number of Seats -->
+      <div class="form-group">
+        <label for="numberOfSeats">Number of Seats:</label>
+        <input
+          type="number"
+          id="numberOfSeats"
+          [(ngModel)]="numberOfSeats"
+          name="numberOfSeats"
+          min="1"
+          required
+          #numberOfSeatsField="ngModel"
+          [ngClass]="{'is-invalid': numberOfSeatsField.invalid && numberOfSeatsField.touched}"
+        />
+        <div *ngIf="numberOfSeatsField.invalid && numberOfSeatsField.touched" class="error-message">
+          At least one seat is required.
+        </div>
+      </div>
+  
+      <!-- Seat Location -->
+      <div class="form-group">
+        <label for="seatLocation">Choose Seat Location:</label>
+        <select
+          id="seatLocation"
+          [(ngModel)]="seatLocation"
+          name="seatLocation"
+          required
+          #seatLocationField="ngModel"
+          [ngClass]="{'is-invalid': seatLocationField.invalid && seatLocationField.touched}"
+        >
+          <option value="">Select a seat</option>
+          <option *ngFor="let seat of availableSeats" [value]="seat">{{ seat }}</option>
+        </select>
+        <div *ngIf="seatLocationField.invalid && seatLocationField.touched" class="error-message">
+          A seat must be selected.
+        </div>
+      </div>
+  
+      <!-- Total Price Display -->
+      <div class="total-price">
+        <strong>Total Price: {{ calculatePrice() | currency }}</strong>
+      </div>
+  
+      <!-- Book Seat Button -->
+      <button type="submit" [disabled]="bookingForm.invalid">Book Seat</button>
+    </form>
+  </div>
+  

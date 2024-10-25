@@ -1,0 +1,134 @@
+<div class="add-movie-form">
+  <h3>Add a New Movie</h3>
+  <form (ngSubmit)="addMovie()" #movieForm="ngForm">
+    <!-- Movie Name -->
+    <div class="form-group">
+      <label for="name">Movie Name:</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="name"
+        name="name"
+        required
+        #nameField="ngModel"
+        [ngClass]="{'is-invalid': nameField.invalid && nameField.touched}"
+      />
+      <div *ngIf="nameField.invalid && nameField.touched" class="error-message">
+        Movie Name is required.
+      </div>
+    </div>
+
+    <!-- Movie Category -->
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <input
+        type="text"
+        id="category"
+        [(ngModel)]="category"
+        name="category"
+        required
+        #categoryField="ngModel"
+        [ngClass]="{'is-invalid': categoryField.invalid && categoryField.touched}"
+      />
+      <div *ngIf="categoryField.invalid && categoryField.touched" class="error-message">
+        Movie Category is required.
+      </div>
+    </div>
+
+    <!-- Movie Description -->
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input
+        type="text"
+        id="description"
+        [(ngModel)]="description"
+        name="description"
+      />
+    </div>
+
+    <!-- Thumbnail URL -->
+    <div class="form-group">
+      <label for="thumbnail">Thumbnail URL:</label>
+      <input
+        type="text"
+        id="thumbnail"
+        [(ngModel)]="thumbnail"
+        name="thumbnail"
+      />
+    </div>
+
+    <!-- Duration, Date, Time, Hall Number -->
+    <div class="form-row">
+      <!-- Duration -->
+      <div class="form-group">
+        <label for="duration">Duration (minutes):</label>
+        <input
+          type="number"
+          id="duration"
+          [(ngModel)]="duration"
+          name="duration"
+          required
+          #durationField="ngModel"
+          [ngClass]="{'is-invalid': durationField.invalid && durationField.touched}"
+        />
+        <div *ngIf="durationField.invalid && durationField.touched" class="error-message">
+          Duration is required.
+        </div>
+      </div>
+
+      <!-- Date -->
+      <div class="form-group">
+        <label for="date">Release Date:</label>
+        <input
+          type="date"
+          id="date"
+          [(ngModel)]="date"
+          name="date"
+          required
+          #dateField="ngModel"
+          [ngClass]="{'is-invalid': dateField.invalid && dateField.touched}"
+        />
+        <div *ngIf="dateField.invalid && dateField.touched" class="error-message">
+          Release Date is required.
+        </div>
+      </div>
+
+      <!-- Time -->
+      <div class="form-group">
+        <label for="time">Show Time:</label>
+        <input
+          type="time"
+          id="time"
+          [(ngModel)]="time"
+          name="time"
+          required
+          #timeField="ngModel"
+          [ngClass]="{'is-invalid': timeField.invalid && timeField.touched}"
+        />
+        <div *ngIf="timeField.invalid && timeField.touched" class="error-message">
+          Show Time is required.
+        </div>
+      </div>
+
+      <!-- Hall Number -->
+      <div class="form-group">
+        <label for="hallNumber">Hall Number:</label>
+        <input
+          type="number"
+          id="hallNumber"
+          [(ngModel)]="hallNumber"
+          name="hallNumber"
+          required
+          #hallNumberField="ngModel"
+          [ngClass]="{'is-invalid': hallNumberField.invalid && hallNumberField.touched}"
+        />
+        <div *ngIf="hallNumberField.invalid && hallNumberField.touched" class="error-message">
+          Hall Number is required.
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Movie Button -->
+    <button type="submit" [disabled]="movieForm.invalid">Add Movie</button>
+  </form>
+</div>

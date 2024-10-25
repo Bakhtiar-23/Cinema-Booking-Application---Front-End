@@ -1,0 +1,74 @@
+<!--Bakhtiar-->
+<div class="movie-list">
+  <!-- Header -->
+  <header class="header">
+    <h2>Movie Categories</h2>
+    <nav class="movie-categories">
+      <button *ngFor="let category of movieCategories" 
+              class="category-button" 
+              (click)="onSelectCategory(category)">
+        {{ category.name }}
+      </button>
+    </nav>
+  </header>
+
+  <!-- Search Box -->
+  <div class="search-container">
+    <input type="text" [(ngModel)]="searchTerm" class="search-input" placeholder="Search movies..." />
+  </div>
+
+  <!-- Movie Details Section -->
+  <section class="main-section">
+    <!-- Add Movie Form on the left side -->
+    <div class="add-movie-form">
+      <app-add-movie (movieAdded)="onMovieAdded($event)"></app-add-movie>
+    </div>
+
+    <!-- Movie Details on the right side -->
+    <div class="movie-details-section" *ngIf="selectedMovie">
+      <div class="movie-details">
+        <img [src]="selectedMovie.thumbnail" alt="{{ selectedMovie.name }}" class="thumbnail" />
+        <div class="movie-details-text">
+          <h2>{{ selectedMovie.name | uppercase }}</h2>
+          <p>{{ selectedMovie.description }}</p>
+          <h3>{{ selectedMovie.category | uppercase }}</h3>
+
+          <!-- New movie info fields -->
+          <div class="movie-info">
+            <div class="detail duration">Duration: {{ selectedMovie.duration }}</div>
+            <div class="detail date">Date: {{ selectedMovie.date }}</div>
+            <div class="detail time">Time: {{ selectedMovie.time }}</div>
+            <div class="detail hall-number">Hall Number: {{ selectedMovie.hallNumber }}</div>
+            
+            <app-movie-booking *ngIf="selectedMovie" [movie]="selectedMovie"></app-movie-booking>
+          </div>
+
+          <!-- Movie Rating Section -->
+          <div class="rating">
+            <h4>Rate this movie</h4>
+            <div class="star-rating">
+              <span *ngFor="let star of stars; let i = index"
+                    (click)="rateMovie(i + 1)"
+                    [ngClass]="{ 'filled': i < (selectedMovie.rating || 0) }">&#9733;</span>
+            </div>
+            <p>{{ selectedMovie.rating || 0 }} / 5</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <h2>Available Movies</h2>
+    <ul class="movies">
+      <li *ngFor="let movie of filteredMovies" class="movie-item">
+        <button class="movie-button" (click)="onSelect(movie)">
+          <span class="badge">{{ movie.id }}</span>
+          <span class="name">{{ movie.name }}</span>
+          <img [src]="movie.thumbnail" alt="{{ movie.name }}" class="thumbnail" />
+        </button>
+      </li>
+    </ul>
+  </main>
+</div>
