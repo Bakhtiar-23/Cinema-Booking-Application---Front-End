@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { MovieBookingComponent } from './movie-booking/movie-booking.component'; // Adjust the path if necessary
+import { AppMovieComponent } from './add-movie/add-movie.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    
+    AppMovieComponent
     
     
     
@@ -22,7 +24,8 @@ import { MovieBookingComponent } from './movie-booking/movie-booking.component';
     MovieListComponent,
     AppComponent,
     AddMovieComponent,
-    MovieBookingComponent
+    MovieBookingComponent,
+    AppRoutingModule
     
   ],
   exports: [MovieListComponent],

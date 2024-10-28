@@ -21,8 +21,9 @@
   <section class="main-section">
     <!-- Add Movie Form on the left side -->
     <div class="add-movie-form">
-      <app-add-movie (movieAdded)="onMovieAdded($event)"></app-add-movie>
-    </div>
+      
+      <router-outlet (movieAdded)="onMovieAdded($event)"></router-outlet>
+    
 
     <!-- Movie Details on the right side -->
     <div class="movie-details-section" *ngIf="selectedMovie">
