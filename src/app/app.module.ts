@@ -7,12 +7,11 @@ import { AppComponent } from './app.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { MovieBookingComponent } from './movie-booking/movie-booking.component'; // Adjust the path if necessary
-import { AppMovieComponent } from './add-movie/add-movie.component';
-import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppMovieComponent
+    AppComponent,
+    
     
     
     
@@ -22,13 +21,14 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     CommonModule,
     MovieListComponent,
-    AppComponent,
+   
     AddMovieComponent,
-    MovieBookingComponent,
-    AppRoutingModule
+    MovieBookingComponent
     
   ],
   exports: [MovieListComponent],
+  providers: [],
+  bootstrap: [AppComponent]
   
 })
 export class AppModule { }
