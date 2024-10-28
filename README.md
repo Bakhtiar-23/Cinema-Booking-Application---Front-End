@@ -7,6 +7,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+please do: git clone https://github.com/Bakhtiar-23/Cinema-Booking-Application---Front-End.git install npm Run
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
