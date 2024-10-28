@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AddMovieComponent } from '../add-movie/add-movie.component';
 import { MOVIE_CATEGORIES } from '../mock-movies'; // Mock data import
 import { Movie } from '../movie';
@@ -7,6 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule, NgIf, NgFor, UpperCasePipe } from '@angular/common'; // Import CommonModule
 import { MovieService } from '../movie.service'; // Movie service
 import { MovieBookingComponent } from '../movie-booking/movie-booking.component'; // Adjust the path as necessary
+import { Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+
+
 
 @Component({
   standalone: true,
@@ -73,6 +77,11 @@ export class MovieListComponent {
     }
   }
 
+  delete(movie: Movie): void {
+    this.movies = this.movies.filter(h => h !== movie);
+    this.movieService.deleteMovie(movie.id).subscribe();
+  }
+
   // Book the selected movie
   bookMovie(movie: Movie): void {
     if (movie) {
@@ -91,3 +100,35 @@ export class MovieListComponent {
     }
   }
 }
+
+@Component({
+  selector: 'app-movie-search',
+  templateUrl: './movie-list.component.html',
+  styleUrls: [ './movie-list.component.css' ]
+})
+export class MovieSearchComponent implements OnInit {
+  movies$!: Observable<Movie[]>;
+  private searchTerms = new Subject<string>();
+
+  constructor(private movieService: MovieService) {}
+
+  // Push a search term into the observable stream.
+  search(term: string): void {
+    this.searchTerms.next(term);
+  }
+
+  ngOnInit(): void {
+    this.movies$ = this.searchTerms.pipe(
+      // wait 300ms after each keystroke before considering the term
+      debounceTime(300),
+
+      // ignore new term if same as previous term
+      distinctUntilChanged(),
+
+      // switch to new search observable each time the term changes
+      switchMap((term: string) => this.movieService.searchMovies(term)),
+    );
+  }
+}
+
+

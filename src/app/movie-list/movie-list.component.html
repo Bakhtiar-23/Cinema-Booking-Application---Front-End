@@ -15,6 +15,7 @@
   <!-- Search Box -->
   <div class="search-container">
     <input type="text" [(ngModel)]="searchTerm" class="search-input" placeholder="Search movies..." />
+    <li *ngFor="let movie of movies$ | async" ></li>
   </div>
 
   <!-- Movie Details Section -->
@@ -72,4 +73,15 @@
       </li>
     </ul>
   </main>
+
+  <ul class="movies">
+    <li *ngFor="let movie of movies">
+      <a routerLink="/detail/{{movie.id}}">
+        <span class="badge">{{movie.id}}</span> {{movie.name}}
+      </a>
+      <button type="button" class="delete" title="delete movie"
+        (click)="delete(movie)">x</button>
+    </li>
+  </ul>
+
 </div>
