@@ -1,0 +1,16 @@
+<div *ngIf="movies.length > 0; else noMovies">
+    <div *ngFor="let movie of movies" class="movie-item">
+      <img [src]="movie.thumbnail" alt="{{ movie.name }}" />
+      <h2>{{ movie.name }}</h2>
+      <p>{{ movie.category }}</p>
+      <p>{{ movie.description }}</p>
+      <p>{{ movie.duration }}</p>
+      <p>{{ movie.date }} - {{ movie.time }}</p>
+      <p>Hall: {{ movie.hallNumber }}</p>
+    </div>
+  </div>
+  
+  <ng-template #noMovies>
+    <p>No movies available.</p>
+  </ng-template>
+  

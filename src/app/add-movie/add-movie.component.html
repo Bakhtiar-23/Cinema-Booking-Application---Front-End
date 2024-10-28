@@ -131,4 +131,9 @@
     <!-- Add Movie Button -->
     <button type="submit" [disabled]="movieForm.invalid">Add Movie</button>
   </form>
+
+  <div *ngFor="let movie of movies">
+    <p>{{ movie.name }} ({{ movie.category }})</p>
+    <button (click)="deleteMovie(movie.id)">Delete</button>
+  </div>
 </div>
