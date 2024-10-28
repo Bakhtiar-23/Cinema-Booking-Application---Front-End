@@ -13,9 +13,6 @@ import { Movie } from '../movie';
 })
 export class AddMovieComponent {
   @Output() movieAdded = new EventEmitter<Movie>();
-  @Output() movieDeleted = new EventEmitter<number>();
-
-  @Input() movies: Movie[] = [];
 
   id: number | null = null;
   name: string = '';
@@ -31,7 +28,7 @@ export class AddMovieComponent {
 
   addMovie() {
     const newMovie: Movie = {
-      id: this.id?? this.generateUniqueId(), // Use non-null assertion because id will be set
+      id: this.id!, // Use non-null assertion because id will be set
       name: this.name,
       category: this.category,
       description: this.description,
@@ -48,13 +45,6 @@ export class AddMovieComponent {
     this.resetForm();
   }
 
-  deleteMovie(movieId: number) {
-    if (confirm(`Are you sure you want to delete this movie?`)) {
-      this.movieDeleted.emit(movieId); // Emit the id of the movie to be deleted
-      alert(`Movie deleted successfully!`);
-    }
-  }
-
   resetForm() {
     this.id = null;
     this.name = '';
@@ -65,9 +55,5 @@ export class AddMovieComponent {
     this.date = ''; // Reset date
     this.time = ''; // Reset time
     this.hallNumber = null; // Reset hall number
-  }
-
-  private generateUniqueId(): number {
-    return Math.floor(Math.random() * 1000000); // Simple unique ID generator
   }
 }

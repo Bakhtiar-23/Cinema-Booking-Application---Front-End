@@ -190,19 +190,3 @@
 .star-rating span.filled {
   color: gold;
 }
-
-/* Delete button style for movie list */
-.delete {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.delete:hover {
-  background-color: #c82333;
-}
